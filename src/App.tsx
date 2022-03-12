@@ -1,26 +1,94 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './assets/fonts/fonts.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { BrowserRouter } from 'react-router-dom';
 
-export default App;
+import {
+	CircularProgress,
+	createTheme,
+	CssBaseline,
+	ThemeProvider,
+} from '@mui/material';
+
+import ErrorFallBack from './components/base/error-page';
+import AllRoutes from './routes';
+import { useMediaQuery } from '@mui/material';
+
+export const ColorModeContext = React.createContext({
+	toggleColorMode: () => {},
+});
+
+// const MyApp = () => {
+// 	const theme = useTheme();
+// 	const colorMode = React.useContext(ColorModeContext);
+// 	return (
+// 		<Box
+// 			sx={{
+// 				display: 'flex',
+// 				width: '100%',
+// 				alignItems: 'center',
+// 				justifyContent: 'center',
+// 				bgcolor: 'background.default',
+// 				color: 'text.primary',
+// 				borderRadius: 1,
+// 				p: 3,
+// 			}}
+// 		>
+// 			{theme.palette.mode} mode
+// 			<IconButton
+// 				sx={{ ml: 1 }}
+// 				onClick={colorMode.toggleColorMode}
+// 				color='inherit'
+// 			>
+// 				{theme.palette.mode === 'dark' ? (
+// 					<Brightness7Icon />
+// 				) : (
+// 					<Brightness4Icon />
+// 				)}
+// 			</IconButton>
+// 		</Box>
+// 	);
+// };
+
+export const App = () => {
+	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+	const [mode, setMode] = React.useState<'light' | 'dark'>(
+		prefersDarkMode ? 'dark' : 'light'
+	);
+
+	const colorMode = React.useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+			},
+		}),
+		[]
+	);
+
+	const theme = React.useMemo(
+		() =>
+			createTheme({
+				palette: {
+					mode,
+				},
+			}),
+		[mode]
+	);
+
+	return (
+		<ColorModeContext.Provider value={colorMode}>
+			<ThemeProvider theme={theme}>
+				<ErrorBoundary FallbackComponent={ErrorFallBack}>
+					<BrowserRouter>
+						<Suspense fallback={<CircularProgress />}>
+							<CssBaseline />
+							<AllRoutes />
+						</Suspense>
+					</BrowserRouter>
+				</ErrorBoundary>
+			</ThemeProvider>
+		</ColorModeContext.Provider>
+	);
+};
