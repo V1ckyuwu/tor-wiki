@@ -1,0 +1,29 @@
+/* manrope-500 - latin */
+/*noinspection CssUnknownTarget*/
+@font-face {
+	font-family: 'Beaufort';
+	font-style: normal;
+	font-weight: 500;
+	src: local(''),
+		url('../../../public/fonts/beaufort/beaufort-regular.woff2') format('woff2'),
+		/* Super Modern Browsers */
+			url('../../../public/fonts/beaufort/beaufort-regular.woff') format('woff'),
+		/* Modern Browsers */
+			url('../../../public/fonts/beaufort/beaufort-regular.ttf')
+			format('truetype');
+}
+
+/* manrope-700 - latin */
+/*noinspection CssUnknownTarget*/
+@font-face {
+	font-family: 'Beaufort';
+	font-style: normal;
+	font-weight: 700;
+	src: local(''),
+		/* IE6-IE8 */ url('../../../public/fonts/beaufort/beaufort-bold.woff2')
+			format('woff2'),
+		/* Super Modern Browsers */
+			url('../../../public/fonts/beaufort/beaufort-bold.woff') format('woff'),
+		/* Modern Browsers */
+			url('../../../public/fonts/beaufort/beaufort-bold.ttf') format('truetype');
+}
