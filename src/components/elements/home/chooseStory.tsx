@@ -18,9 +18,6 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 	const { showChooseOwnAdventure, title, description, buttonLink, buttonName } =
 		props;
 
-	// const theme = useTheme();
-	// const isMdOrMore = useMediaQuery(theme.breakpoints.up('md'));
-
 	return (
 		<Grid
 			container
@@ -117,11 +114,10 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={3}
 				lg={3}
-				style={{
-					height: '100%',
-					width: '100%',
-					position: 'relative',
-				}}
+				height={'100%'}
+				width={'100%'}
+				position={'relative'}
+				bgcolor={'#000'}
 			>
 				<img
 					src={'/static/piltover_scenery.webp'}
@@ -158,7 +154,10 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={6}
 				lg={6}
-				style={{ height: '100%', width: '100%', position: 'relative' }}
+				height={'100%'}
+				width={'100%'}
+				position={'relative'}
+				bgcolor={'#000'}
 			>
 				<video
 					src='/static/choose_story_video.mp4'
@@ -168,6 +167,7 @@ export const ChooseYourStory: Component = () => {
 						height: '100%',
 						objectFit: 'cover',
 						zIndex: 0,
+						opacity: 0.5,
 					}}
 					autoPlay
 					playsInline
@@ -202,7 +202,10 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={3}
 				lg={3}
-				style={{ height: '100%', width: '100%', position: 'relative' }}
+				height={'100%'}
+				width={'100%'}
+				position={'relative'}
+				bgcolor={'#000'}
 			>
 				<img
 					src={'/static/scenery.webp'}
@@ -213,6 +216,7 @@ export const ChooseYourStory: Component = () => {
 						height: '100%',
 						objectFit: 'cover',
 						zIndex: 0,
+						opacity: 0.5,
 					}}
 				/>
 				<Box
