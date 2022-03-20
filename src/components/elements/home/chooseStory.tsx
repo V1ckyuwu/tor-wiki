@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, useMediaQuery, useTheme } from '@mui/material';
 
 import { Component, ComponentProps } from '../../base/fc';
 
@@ -18,6 +18,9 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 	const { showChooseOwnAdventure, title, description, buttonLink, buttonName } =
 		props;
 
+	const theme = useTheme();
+	const isMdOrMore = useMediaQuery(theme.breakpoints.up('md'));
+
 	return (
 		<Grid
 			container
@@ -34,7 +37,16 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 			<Grid item xs={3}>
 				<p
 					style={{
-						visibility: showChooseOwnAdventure ? 'visible' : 'hidden',
+						visibility: showChooseOwnAdventure
+							? 'visible'
+							: isMdOrMore
+							? 'hidden'
+							: 'visible',
+						display: showChooseOwnAdventure
+							? 'block'
+							: isMdOrMore
+							? 'block'
+							: 'none',
 						paddingTop: '50px',
 						paddingBottom: '30px',
 						fontFamily: 'Beaufort',
@@ -51,6 +63,7 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 			<Grid item xs={6}>
 				<p
 					style={{
+						paddingTop: !showChooseOwnAdventure && !isMdOrMore ? '40px' : '0px',
 						paddingBottom: '20px',
 						fontFamily: 'Beaufort',
 						fontWeight: '700',
@@ -91,6 +104,9 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 						color: '#ACF0FB',
 						letterSpacing: '2px',
 						border: '4px double #0BC4E2',
+						':hover': {
+							border: '4px double #0BC4E2',
+						},
 					}}
 				>
 					{buttonName}
@@ -107,14 +123,14 @@ export const ChooseYourStory: Component = () => {
 			spacing={2}
 			columns={{ xs: 12, lg: 12 }}
 			direction={{ xs: 'column', lg: 'row' }}
-			justifyContent={'space-around'}
-			alignItems={'center'}
+			justifyContent={'space-between'}
+			alignItems={'stretch'}
 		>
 			<Grid
 				item
 				xs={3}
 				lg={3}
-				height={'100%'}
+				// height={'100%'}
 				width={'100%'}
 				position={'relative'}
 				bgcolor={'#000'}
@@ -124,7 +140,7 @@ export const ChooseYourStory: Component = () => {
 					alt={'Scenery'}
 					style={{
 						position: 'absolute',
-						width: '100%',
+						width: '95%',
 						height: '100%',
 						objectFit: 'cover',
 						zIndex: 0,
@@ -146,7 +162,9 @@ export const ChooseYourStory: Component = () => {
 							' razonable'
 						}
 						buttonName={'Personajes'}
-						buttonLink={'/heyo'}
+						buttonLink={
+							'https://www.guilded.gg/ToR/groups/Edxr06G3/channels/0571edb5-11bc-47db-a03f-419d6d888cb7/list'
+						}
 					/>
 				</Box>
 			</Grid>
@@ -154,7 +172,7 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={6}
 				lg={6}
-				height={'100%'}
+				// height={'100%'}
 				width={'100%'}
 				position={'relative'}
 				bgcolor={'#000'}
@@ -194,7 +212,7 @@ export const ChooseYourStory: Component = () => {
 							'e a los contenidos canon ya creados por Riot Games.'
 						}
 						buttonName={'Normativa'}
-						buttonLink={'/heyo'}
+						buttonLink={'/rules'}
 					/>
 				</Box>
 			</Grid>
@@ -202,9 +220,9 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={3}
 				lg={3}
-				height={'100%'}
-				width={'100%'}
-				position={'relative'}
+				// width={'100%'}
+				// position={'relative'}
+
 				bgcolor={'#000'}
 			>
 				<img
@@ -234,7 +252,7 @@ export const ChooseYourStory: Component = () => {
 							' historia oficial del universo de League'
 						}
 						buttonName={'Solicitar'}
-						buttonLink={'/heyo'}
+						buttonLink={'/request'}
 					/>
 				</Box>
 			</Grid>

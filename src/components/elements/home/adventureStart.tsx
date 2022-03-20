@@ -9,7 +9,7 @@ export const AdventureStart: Component = () => {
 	const isMdOrMore = useMediaQuery(theme.breakpoints.up('md'));
 
 	return (
-		<Box>
+		<Box height={'100%'} width={'100%'} position={'relative'} bgcolor={'#000'}>
 			<video
 				src='/static/landing.mp4'
 				style={{
@@ -19,7 +19,7 @@ export const AdventureStart: Component = () => {
 					width: '100%',
 					height: '100vh',
 					objectFit: 'cover',
-					zIndex: -1,
+					zIndex: 1,
 				}}
 				autoPlay
 				playsInline
@@ -27,6 +27,8 @@ export const AdventureStart: Component = () => {
 				loop
 			/>
 			<Stack
+				zIndex={2}
+				position={'relative'}
 				direction={'column'}
 				justifyContent={'space-evenly'}
 				alignItems={'flex-start'}
