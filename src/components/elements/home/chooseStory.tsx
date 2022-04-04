@@ -24,7 +24,7 @@ const StoryDescriptionBlock: Component<StoryDescriptionBlockProps> = (
 	return (
 		<Grid
 			container
-			spacing={2}
+			spacing={0}
 			columns={12}
 			direction={'column'}
 			justifyContent={'space-between'}
@@ -120,7 +120,7 @@ export const ChooseYourStory: Component = () => {
 	return (
 		<Grid
 			container
-			spacing={2}
+			spacing={0}
 			columns={{ xs: 12, lg: 12 }}
 			direction={{ xs: 'column', lg: 'row' }}
 			justifyContent={'space-between'}
@@ -130,7 +130,6 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={3}
 				lg={3}
-				// height={'100%'}
 				width={'100%'}
 				position={'relative'}
 				bgcolor={'#000'}
@@ -140,7 +139,7 @@ export const ChooseYourStory: Component = () => {
 					alt={'Scenery'}
 					style={{
 						position: 'absolute',
-						width: '95%',
+						width: '100%',
 						height: '100%',
 						objectFit: 'cover',
 						zIndex: 0,
@@ -212,7 +211,7 @@ export const ChooseYourStory: Component = () => {
 							'e a los contenidos canon ya creados por Riot Games.'
 						}
 						buttonName={'Normativa'}
-						buttonLink={'/rules'}
+						buttonLink={'/normativa'}
 					/>
 				</Box>
 			</Grid>
@@ -220,9 +219,8 @@ export const ChooseYourStory: Component = () => {
 				item
 				xs={3}
 				lg={3}
-				// width={'100%'}
-				// position={'relative'}
-
+				width={'100%'}
+				position={'relative'}
 				bgcolor={'#000'}
 			>
 				<img

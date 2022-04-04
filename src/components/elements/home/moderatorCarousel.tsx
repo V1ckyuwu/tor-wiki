@@ -1,5 +1,4 @@
 import React from 'react';
-import Carousel from 'react-material-ui-carousel';
 
 import { Box, useTheme, useMediaQuery, SvgIcon } from '@mui/material';
 
@@ -30,7 +29,7 @@ export const ModeratorCarousel: Component = () => {
 	];
 	return (
 		<Box bgcolor={'#000'} position={'relative'} height={'100%'}>
-			<Carousel
+			{/* <Carousel
 				autoPlay
 				indicators
 				swipe
@@ -131,7 +130,7 @@ export const ModeratorCarousel: Component = () => {
 						</Box>
 					);
 				})}
-			</Carousel>
+			</Carousel> */}
 		</Box>
 	);
 };
