@@ -193,7 +193,6 @@ const Header: Component = () => {
 						borderRadius={1}
 						padding={3}
 					>
-						{console.log(isLightMode)}
 						<IconButton onClick={colorMode.toggleColorMode} color={'inherit'}>
 							{isLightMode ? <Brightness4 /> : <Brightness7 />}
 						</IconButton>

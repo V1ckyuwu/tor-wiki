@@ -3,13 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { Component } from '../components/base/fc';
 
 const HomePage = lazy(() => import('../pages/home'));
+const RulePage = lazy(() => import('../pages/rules'));
 
 const AllRoutes: Component = () => {
 	return (
 		<Routes>
-			<Route path={'/'} element={<HomePage />}>
-				{/* <Route path={':searchQuery'} element={<HomePage />} /> */}
-			</Route>
+			<Route path={'/'} element={<HomePage />} />
+			<Route path={'/normativa'} element={<RulePage />} />
 		</Routes>
 	);
 };
